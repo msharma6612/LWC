@@ -1,0 +1,29 @@
+Childcmp.html
+  
+  <template>
+      <h1>child Component</h1>
+        <p>{getvaluefromparent}</p>
+   </template>    
+
+Childcmp.js
+import{lightningelement,api} from 'LWC';
+export default childcmp extends lightningelement
+  {
+      @api getvaluefromparent;
+  }
+
+
+parent html
+<template>
+<h1>parentcomponent</h1>
+<c-child-cmp-get-value-from-parent={value}></c-child-cmp>
+ </template>
+
+parent js
+import{lightningelement} from lwc;
+export default class parentcmp extends lightningelement
+{
+  Value="Value from Parent Component"
+} 
+  
+        
