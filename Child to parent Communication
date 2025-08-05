@@ -1,0 +1,42 @@
+Childcmp.html
+<template>
+   <h2>child component</h2>
+   <lightning input label="Enter search Value" onchange={hanldechange}></lightning-input-label>
+ </template>
+
+childcmp.js
+import{lightningelement} from lwc;
+export default childcmp extends lightningelement
+{
+search key;
+handlechange(event)
+{
+this.searchkey=event.target.value;
+
+//create custom  event
+const searchevent=new customevent("getsearchfromvalue",{detail:this.searchkey});
+
+//dispatch event
+this.dispatchevent(searchevent);
+}
+}
+
+parentcmp.html
+<template>
+<h1>parent component</h1>
+<c-child-cmp ongetsearchvalue={handlesearchvalue}></c-child-cmp>
+</template>
+
+parentcmp.js
+import{lightningelemet,track} from lwc;
+export default class parentcmp extends lightningelement
+ {
+  handlesearchvalue(event)
+{
+this.searchvalue=event.detail;
+}
+}
+
+
+
+
